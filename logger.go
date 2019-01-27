@@ -63,6 +63,8 @@ type LogFormatterParams struct {
 	ErrorMessage string
 	// IsTerm shows whether does gin's output descriptor refers to a terminal.
 	IsTerm bool
+	// Size is the size of the Response
+	Size int
 }
 
 // defaultLogFormatter is the default log format function Logger middleware uses.
@@ -184,6 +186,8 @@ func LoggerWithConfig(conf LoggerConfig) HandlerFunc {
 			param.Method = c.Request.Method
 			param.StatusCode = c.Writer.Status()
 			param.ErrorMessage = c.Errors.ByType(ErrorTypePrivate).String()
+
+			param.Size = c.Writer.Size()
 
 			if raw != "" {
 				path = path + "?" + raw
