@@ -1,4 +1,4 @@
-module github.com/gin-gonic/gin
+module github.com/phacops/gin
 
 require (
 	github.com/gin-contrib/sse v0.0.0-20190124093953-61b50c2ef482
